@@ -67,9 +67,10 @@ require("lspconfig").html.setup(coq.lsp_ensure_capabilities({on_attach = on_atta
 require("lspconfig").lua_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 require("lspconfig").custom_elements_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 require("lspconfig").ts_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
+require("lspconfig").jsonls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "typescript",
+  pattern = {"typescript", "json", "jsonc"},
   callback = function()
     vim.bo.tabstop = 2      -- Set tab width to 2 spaces
     vim.bo.shiftwidth = 2    -- Set indentation width to 2 spaces
