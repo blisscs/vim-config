@@ -66,6 +66,7 @@ require("lspconfig").rust_analyzer.setup(coq.lsp_ensure_capabilities({on_attach 
 require("lspconfig").html.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 require("lspconfig").lua_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 require("lspconfig").custom_elements_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
+require("lspconfig").ts_ls.setup(coq.lsp_ensure_capabilities({on_attach = on_attach, capabilities = capabilities}))
 EOF
 
 set background=light
