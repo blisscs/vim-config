@@ -45,14 +45,12 @@ Plug 'tpope/vim-commentary'
 " Fuzzy finder with ripgrep integration
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Catppuccin theme - bright pastel theme for Vim
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+" Gruvbox theme - retro groove color scheme (tracks latest master)
+Plug 'morhetz/gruvbox'
  " Coc autocompletion plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Airline status line - enhanced status bar with many features
 Plug 'vim-airline/vim-airline'
-" Airline themes collection
-Plug 'vim-airline/vim-airline-themes'
 " Show marks in sign column
 Plug 'kshenoy/vim-signature'
 call plug#end()
@@ -223,12 +221,14 @@ if has('termguicolors')
     set termguicolors
 endif
 
-" Apply the catppuccin latte theme (bright variant)
-colorscheme catppuccin_latte
+" Apply gruvbox in light mode
+set background=light
+let g:gruvbox_contrast_light = 'medium'
+colorscheme gruvbox
 
-" Fix black blank lines - match EndOfBuffer to background
-highlight EndOfBuffer guifg=#eff1f5 guibg=#eff1f5
-highlight NonText guifg=#ccd0da guibg=#eff1f5
+" Fix black blank lines - match EndOfBuffer to gruvbox light bg0
+highlight EndOfBuffer guifg=#fbf1c7 guibg=#fbf1c7
+highlight NonText guifg=#d5c4a1 guibg=#fbf1c7
 
 " Git gutter configuration
 " Enable git gutter by default
@@ -309,16 +309,14 @@ endif
  " Airline configuration
  " Enable airline status line
  let g:airline_powerline_fonts = 1
- let g:airline_theme = 'catppuccin_latte'
+ " Gruvbox ships its own airline theme, so vim-airline-themes is not needed
+ let g:airline_theme = 'gruvbox'
  " Show airline in all windows
  let g:airline_statusline_ontop = 0
  " Enable gitgutter integration with airline
  let g:airline#extensions#gitgutter#enabled = 1
   " Enable coc integration with airline
   let g:airline#extensions#coc#enabled = 1
-
-" Custom visual selection highlight (catppuccin latte compatible)
-hi Visual guibg=#8839ef guifg=#eff1f5 ctermbg=magenta ctermfg=white
 
 
 
