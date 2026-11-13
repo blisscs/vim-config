@@ -51,8 +51,6 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Airline status line - enhanced status bar with many features
 Plug 'vim-airline/vim-airline'
-" Airline themes collection
-Plug 'vim-airline/vim-airline-themes'
 " Show marks in sign column
 Plug 'kshenoy/vim-signature'
 call plug#end()
@@ -311,6 +309,7 @@ endif
  " Airline configuration
  " Enable airline status line
  let g:airline_powerline_fonts = 1
+ " Gruvbox ships its own airline theme, so vim-airline-themes is not needed
  let g:airline_theme = 'gruvbox'
  " Show airline in all windows
  let g:airline_statusline_ontop = 0
