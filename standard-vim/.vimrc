@@ -33,7 +33,7 @@ Plug 'mhinz/vim-mix-format'
 " Rust language support - enhanced syntax highlighting, rustfmt integration, and Rust-specific commands
 Plug 'rust-lang/rust.vim'
 " Markdown language support - syntax highlighting, folding, and markdown-specific commands
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
 " Git gutter - shows git changes in the sign column
 Plug 'airblade/vim-gitgutter'
 " Git integration - fugitive for git commands inside vim
@@ -236,10 +236,6 @@ let g:gitgutter_enabled = 1
 let g:gitgutter_signs = 1
 " Enable line highlights
 let g:gitgutter_highlight_lines = 1
-" Update signs on focus gained and buffer enter
-let g:gitgutter_async = 1
-" Start immediately without delay
-let g:gitgutter_realtime = 1
 " Set up signs for better visibility
 let g:gitgutter_sign_added = '▎'
 let g:gitgutter_sign_modified = '▎'
