@@ -275,21 +275,36 @@ nnoremap <leader>cc :Commentary<CR>
 " Toggle comment for visual selection
 xnoremap <leader>cc :Commentary<CR>
 " Git integration key mappings
-nnoremap <leader>gs :Git<CR>                " Open git status
-nnoremap <leader>gc :Git commit<CR>         " Git commit
-nnoremap <leader>gca :Git commit --amend<CR> " Git commit amend
-nnoremap <leader>gp :Git push<CR>           " Git push
-nnoremap <leader>gpl :Git pull<CR>          " Git pull
-nnoremap <leader>ga :Git add %<CR>          " Git add current file
-nnoremap <leader>gaa :Git add .<CR>         " Git add all files
- nnoremap <leader>gdf :Git diff<CR>           " Git diff
-nnoremap <leader>gds :Git diff --staged<CR> " Git diff staged
-nnoremap <leader>gb :Git blame<CR>          " Git blame
-nnoremap <leader>gl :Git log<CR>            " Git log
-nnoremap <leader>gv :Gitv<CR>               " Git log viewer
-nnoremap <leader>gsh :Git stash<CR>         " Git stash
-nnoremap <leader>gsp :Git stash pop<CR>     " Git stash pop
- nnoremap <leader>grm :Git remove %<CR>       " Git remove current file
+" Open git status
+nnoremap <leader>gs :Git<CR>
+" Git commit
+nnoremap <leader>gc :Git commit<CR>
+" Git commit amend
+nnoremap <leader>gca :Git commit --amend<CR>
+" Git push
+nnoremap <leader>gp :Git push<CR>
+" Git pull
+nnoremap <leader>gpl :Git pull<CR>
+" Git add current file
+nnoremap <leader>ga :Git add %<CR>
+" Git add all files
+nnoremap <leader>gaa :Git add .<CR>
+" Git diff
+nnoremap <leader>gdf :Git diff<CR>
+" Git diff staged
+nnoremap <leader>gds :Git diff --staged<CR>
+" Git blame
+nnoremap <leader>gb :Git blame<CR>
+" Git log
+nnoremap <leader>gl :Git log<CR>
+" Git log viewer
+nnoremap <leader>gv :Gitv<CR>
+" Git stash
+nnoremap <leader>gsh :Git stash<CR>
+" Git stash pop
+nnoremap <leader>gsp :Git stash pop<CR>
+" Git remove current file
+nnoremap <leader>grm :Git remove %<CR>
 
 " FZF configuration
 " Use ripgrep for file searching if available
