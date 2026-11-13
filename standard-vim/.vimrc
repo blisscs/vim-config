@@ -18,6 +18,11 @@ set softtabstop=2
 " Set Leader key to match neovim configuration
 let mapleader = ","
 
+" Clear this file's autocmds on re-source so they do not pile up
+augroup vimrc
+  autocmd!
+augroup END
+
 " vim-plug plugin manager
 call plug#begin()
 " Add plugins here
@@ -33,7 +38,7 @@ Plug 'mhinz/vim-mix-format'
 " Rust language support - enhanced syntax highlighting, rustfmt integration, and Rust-specific commands
 Plug 'rust-lang/rust.vim'
 " Markdown language support - syntax highlighting, folding, and markdown-specific commands
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
 " Git gutter - shows git changes in the sign column
 Plug 'airblade/vim-gitgutter'
 " Git integration - fugitive for git commands inside vim
@@ -138,7 +143,9 @@ let g:fern#default_hidden=1
    endif
  endfunction
 
- autocmd CursorHold * silent call CocActionAsync('highlight')
+" Faster CursorHold (default 4s) for coc symbol highlighting
+set updatetime=300
+ autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
 
 
 
@@ -180,8 +187,7 @@ let g:rustfmt_autosave = 1
 
 " TypeScript/JavaScript specific configurations
 " Enable auto-formatting for TypeScript/JavaScript files
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal formatexpr=CocAction('formatSelected')
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd vimrc FileType javascript,javascriptreact,typescript,typescriptreact setlocal formatexpr=CocAction('formatSelected')
 
 " TypeScript/JavaScript key mappings
 " Format current file with prettier
@@ -204,15 +210,15 @@ set shortmess+=c
 
 " File type specific settings
 " JavaScript/TypeScript settings
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact 
+autocmd vimrc FileType javascript,javascriptreact,typescript,typescriptreact 
   \ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
   \ | setlocal commentstring=//%s
 
 " JSON settings
-autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd vimrc FileType json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " HTML/CSS settings
-autocmd FileType html,css,scss,less 
+autocmd vimrc FileType html,css,scss,less 
   \ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Theme configuration
@@ -237,10 +243,6 @@ let g:gitgutter_enabled = 1
 let g:gitgutter_signs = 1
 " Enable line highlights
 let g:gitgutter_highlight_lines = 1
-" Update signs on focus gained and buffer enter
-let g:gitgutter_async = 1
-" Start immediately without delay
-let g:gitgutter_realtime = 1
 " Set up signs for better visibility
 let g:gitgutter_sign_added = '▎'
 let g:gitgutter_sign_modified = '▎'
@@ -249,8 +251,8 @@ let g:gitgutter_sign_removed_first_line = '▎'
 let g:gitgutter_sign_modified_removed = '▎'
 
 " Ensure git gutter starts immediately
-autocmd VimEnter * GitGutterAll
-autocmd BufEnter * GitGutter
+autocmd vimrc VimEnter * GitGutterAll
+autocmd vimrc BufEnter * GitGutter
 
 " Git integration configuration
 " Enable fugitive commands
@@ -275,21 +277,36 @@ nnoremap <leader>cc :Commentary<CR>
 " Toggle comment for visual selection
 xnoremap <leader>cc :Commentary<CR>
 " Git integration key mappings
-nnoremap <leader>gs :Git<CR>                " Open git status
-nnoremap <leader>gc :Git commit<CR>         " Git commit
-nnoremap <leader>gca :Git commit --amend<CR> " Git commit amend
-nnoremap <leader>gp :Git push<CR>           " Git push
-nnoremap <leader>gpl :Git pull<CR>          " Git pull
-nnoremap <leader>ga :Git add %<CR>          " Git add current file
-nnoremap <leader>gaa :Git add .<CR>         " Git add all files
- nnoremap <leader>gdf :Git diff<CR>           " Git diff
-nnoremap <leader>gds :Git diff --staged<CR> " Git diff staged
-nnoremap <leader>gb :Git blame<CR>          " Git blame
-nnoremap <leader>gl :Git log<CR>            " Git log
-nnoremap <leader>gv :Gitv<CR>               " Git log viewer
-nnoremap <leader>gsh :Git stash<CR>         " Git stash
-nnoremap <leader>gsp :Git stash pop<CR>     " Git stash pop
- nnoremap <leader>grm :Git remove %<CR>       " Git remove current file
+" Open git status
+nnoremap <leader>gs :Git<CR>
+" Git commit
+nnoremap <leader>gc :Git commit<CR>
+" Git commit amend
+nnoremap <leader>gca :Git commit --amend<CR>
+" Git push
+nnoremap <leader>gp :Git push<CR>
+" Git pull
+nnoremap <leader>gpl :Git pull<CR>
+" Git add current file
+nnoremap <leader>ga :Git add %<CR>
+" Git add all files
+nnoremap <leader>gaa :Git add .<CR>
+" Git diff
+nnoremap <leader>gdf :Git diff<CR>
+" Git diff staged
+nnoremap <leader>gds :Git diff --staged<CR>
+" Git blame
+nnoremap <leader>gb :Git blame<CR>
+" Git log
+nnoremap <leader>gl :Git log<CR>
+" Git log viewer
+nnoremap <leader>gv :Gitv<CR>
+" Git stash
+nnoremap <leader>gsh :Git stash<CR>
+" Git stash pop
+nnoremap <leader>gsp :Git stash pop<CR>
+" Git remove current file
+nnoremap <leader>grm :GRemove<CR>
 
 " FZF configuration
 " Use ripgrep for file searching if available
