@@ -183,7 +183,6 @@ let g:rustfmt_autosave = 1
 " TypeScript/JavaScript specific configurations
 " Enable auto-formatting for TypeScript/JavaScript files
 autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal formatexpr=CocAction('formatSelected')
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " TypeScript/JavaScript key mappings
 " Format current file with prettier
@@ -304,7 +303,7 @@ nnoremap <leader>gsh :Git stash<CR>
 " Git stash pop
 nnoremap <leader>gsp :Git stash pop<CR>
 " Git remove current file
-nnoremap <leader>grm :Git remove %<CR>
+nnoremap <leader>grm :GRemove<CR>
 
 " FZF configuration
 " Use ripgrep for file searching if available
