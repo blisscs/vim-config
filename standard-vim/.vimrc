@@ -18,6 +18,11 @@ set softtabstop=2
 " Set Leader key to match neovim configuration
 let mapleader = ","
 
+" Clear this file's autocmds on re-source so they do not pile up
+augroup vimrc
+  autocmd!
+augroup END
+
 " vim-plug plugin manager
 call plug#begin()
 " Add plugins here
@@ -140,7 +145,9 @@ let g:fern#default_hidden=1
    endif
  endfunction
 
- autocmd CursorHold * silent call CocActionAsync('highlight')
+" Faster CursorHold (default 4s) for coc symbol highlighting
+set updatetime=300
+ autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
 
 
 
@@ -182,7 +189,7 @@ let g:rustfmt_autosave = 1
 
 " TypeScript/JavaScript specific configurations
 " Enable auto-formatting for TypeScript/JavaScript files
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal formatexpr=CocAction('formatSelected')
+autocmd vimrc FileType javascript,javascriptreact,typescript,typescriptreact setlocal formatexpr=CocAction('formatSelected')
 
 " TypeScript/JavaScript key mappings
 " Format current file with prettier
@@ -205,15 +212,15 @@ set shortmess+=c
 
 " File type specific settings
 " JavaScript/TypeScript settings
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact 
+autocmd vimrc FileType javascript,javascriptreact,typescript,typescriptreact 
   \ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
   \ | setlocal commentstring=//%s
 
 " JSON settings
-autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd vimrc FileType json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " HTML/CSS settings
-autocmd FileType html,css,scss,less 
+autocmd vimrc FileType html,css,scss,less 
   \ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Theme configuration
@@ -244,8 +251,8 @@ let g:gitgutter_sign_removed_first_line = '▎'
 let g:gitgutter_sign_modified_removed = '▎'
 
 " Ensure git gutter starts immediately
-autocmd VimEnter * GitGutterAll
-autocmd BufEnter * GitGutter
+autocmd vimrc VimEnter * GitGutterAll
+autocmd vimrc BufEnter * GitGutter
 
 " Git integration configuration
 " Enable fugitive commands
